@@ -1,0 +1,52 @@
+const precio_base = 2000
+var seguir_cotizando = true
+
+while (seguir_cotizando) {
+  var hijos_recargo = 0.2
+  var recargo = 0
+  var recargo_total= 0
+  
+  var nombre = prompt("Ingrese su nombre, por favor")
+  var edad = parseInt(prompt("¿Cuantos años tiene? Ingrese solamente numeros"))
+ 
+  if (edad >= 18 && edad <= 24) {
+    recargo = 0.1
+  } else if (edad >= 25 && edad <= 49) {
+    recargo = 0.2
+  } else if (edad >= 50) {
+    recargo = 0.3
+  }
+
+   var casado = prompt("¿Está casado actualmente? (si/no)")
+  if (casado == "si") {
+    var edad_conyuge = parseInt(prompt("¿Que edad tiene su esposo/a?"))
+    if (edad_conyuge >= 18 && edad_conyuge <=24) {
+      recargo += 0.1;
+    } else if (edad_conyuge >= 25 && edad_conyuge <= 49) {
+      recargo += 0.2;
+    } else if (edad_conyuge >=50){
+      recargo += 0.3;
+    }
+  }
+
+  var hijos = prompt("¿Tiene hijos o hijas? (si/no)")
+  if (hijos == "si") {
+    var cantidad_hijos = parseInt(prompt("¿Cuantos hijos tiene"));
+    recargo += cantidad_hijos * 0.2;
+  }
+
+
+  var recargo_total = recargo * precio_base
+  var precio_final = precio_base + recargo_total
+
+  alert("Para el asegurado " + nombre)
+  alert("El recargo total es de " + recargo_total)
+  alert("El precio final es de " + precio_final)
+
+  var continuar = prompt("¿Desea cotizar otro seguro? (si/no)")
+
+  if (continuar == "salir"){
+    seguir_cotizando = false
+  }
+
+}
